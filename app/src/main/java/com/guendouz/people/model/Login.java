@@ -1,10 +1,13 @@
 package com.guendouz.people.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Guendouz on 22/11/2016.
  */
 
-public class Login {
+public class Login implements Parcelable {
 
     private String username;
     private String password;
@@ -15,6 +18,16 @@ public class Login {
 
     public Login() {
     }
+
+    protected Login(Parcel in) {
+        username = in.readString();
+        password = in.readString();
+        salt = in.readString();
+        md5 = in.readString();
+        sha1 = in.readString();
+        sha256 = in.readString();
+    }
+
 
     public String getUsername() {
         return username;
@@ -63,4 +76,32 @@ public class Login {
     public void setSha256(String sha256) {
         this.sha256 = sha256;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(username);
+        dest.writeString(password);
+        dest.writeString(salt);
+        dest.writeString(md5);
+        dest.writeString(sha1);
+        dest.writeString(sha256);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Login> CREATOR = new Creator<Login>() {
+        @Override
+        public Login createFromParcel(Parcel in) {
+            return new Login(in);
+        }
+
+        @Override
+        public Login[] newArray(int size) {
+            return new Login[size];
+        }
+    };
+
 }

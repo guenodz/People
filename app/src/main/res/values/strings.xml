@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">People</string>
+    <string name="location">Location</string>
 </resources>

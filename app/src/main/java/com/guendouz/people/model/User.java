@@ -1,12 +1,15 @@
 package com.guendouz.people.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
  * Created by Guendouz on 22/11/2016.
  */
 
-public class User {
+public class User implements Parcelable {
 
     private String gender;
     private Name name;
@@ -23,6 +26,21 @@ public class User {
 
     public User() {
     }
+
+
+    protected User(Parcel in) {
+        gender = in.readString();
+        name = in.readParcelable(Name.class.getClassLoader());
+        location = in.readParcelable(Location.class.getClassLoader());
+        email = in.readString();
+        login = in.readParcelable(Login.class.getClassLoader());
+        phone = in.readString();
+        cell = in.readString();
+        id = in.readParcelable(ID.class.getClassLoader());
+        picture = in.readParcelable(Picture.class.getClassLoader());
+        nat = in.readString();
+    }
+
 
     public String getGender() {
         return gender;
@@ -119,4 +137,37 @@ public class User {
     public void setNat(String nat) {
         this.nat = nat;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(gender);
+        dest.writeParcelable(name, flags);
+        dest.writeParcelable(location, flags);
+        dest.writeString(email);
+        dest.writeParcelable(login, flags);
+        dest.writeString(phone);
+        dest.writeString(cell);
+        dest.writeParcelable(id, flags);
+        dest.writeParcelable(picture, flags);
+        dest.writeString(nat);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+
 }

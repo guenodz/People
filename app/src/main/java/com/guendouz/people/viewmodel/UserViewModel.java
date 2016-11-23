@@ -5,10 +5,10 @@ import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.guendouz.people.R;
 import com.guendouz.people.model.User;
+import com.guendouz.people.view.activity.ProfileActivity;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -33,6 +33,10 @@ public class UserViewModel extends BaseObservable {
         return mUser.getPicture().getLarge();
     }
 
+    public String getLocation() {
+        return mUser.getLocation().toString();
+    }
+
     @BindingAdapter({"imageUrl"})
     public static void loadImage(ImageView view, String imageUrl) {
         Picasso.with(view.getContext())
@@ -42,8 +46,6 @@ public class UserViewModel extends BaseObservable {
     }
 
     public void showUserProfile(View view) {
-
-        Toast.makeText(mContext, "Test", Toast.LENGTH_SHORT).show();
-
+        mContext.startActivity(ProfileActivity.getStartIntent(mContext, mUser));
     }
 }
