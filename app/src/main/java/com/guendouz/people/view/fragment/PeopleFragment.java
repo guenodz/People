@@ -27,7 +27,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- *
+ * This fragment contains a RecyclerView to show the list of users
  */
 public class PeopleFragment extends Fragment {
 

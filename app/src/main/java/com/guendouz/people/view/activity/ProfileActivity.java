@@ -13,6 +13,9 @@ import com.guendouz.people.databinding.ProfileActivityBinding;
 import com.guendouz.people.model.User;
 import com.guendouz.people.viewmodel.UserViewModel;
 
+/**
+ * This activity shows the user profile and must be instantiated using @getStartIntent method
+ */
 public class ProfileActivity extends AppCompatActivity {
 
 

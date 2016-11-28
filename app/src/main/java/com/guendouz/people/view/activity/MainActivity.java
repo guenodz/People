@@ -8,6 +8,9 @@ import com.guendouz.people.R;
 import com.guendouz.people.databinding.MainActivityBinding;
 import com.guendouz.people.view.fragment.PeopleFragment;
 
+/**
+ * The main activity of the app
+ */
 public class MainActivity extends AppCompatActivity {
 
     MainActivityBinding mMainActivityBinding;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
             setSupportActionBar(mMainActivityBinding.toolbar);
             mMainActivityBinding.toolbar.setTitle("People");
         }
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_content, new PeopleFragment())
                 .commit();

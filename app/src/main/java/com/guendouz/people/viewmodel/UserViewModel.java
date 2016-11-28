@@ -12,7 +12,7 @@ import com.guendouz.people.view.activity.ProfileActivity;
 import com.squareup.picasso.Picasso;
 
 /**
- * Created by Guendouz on 22/11/2016.
+ * This class represents the View Model of the User
  */
 
 public class UserViewModel extends BaseObservable {

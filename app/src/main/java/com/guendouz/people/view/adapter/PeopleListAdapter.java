@@ -15,8 +15,7 @@ import com.guendouz.people.viewmodel.UserViewModel;
 import java.util.List;
 
 /**
- *
- *
+ * A RecyclerView Adapter for the people list
  */
 
 public class PeopleListAdapter extends RecyclerView.Adapter<PeopleListAdapter.BindingViewHolder> {
